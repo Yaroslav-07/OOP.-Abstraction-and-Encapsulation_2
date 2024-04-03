@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <fstream>
 #include <string>
 
@@ -11,6 +11,10 @@ private:
 
 public:
     Address(const std::string& city, const std::string& street, int home, int apartment) : city(city), street(street), home(home), apartment(apartment) {}
+
+    std::string getCity() const {
+        return city;
+    }
 
     std::string getOutputAddress() const {
         return city + ", " + street + ", " + std::to_string(home) + ", " + std::to_string(apartment);
@@ -35,7 +39,7 @@ private:
             return new Node(data);
         }
 
-        if (data.city < node->data.city) {
+        if (data.getCity() < node->data.getCity()) {
             node->left = insert(node->left, data);
         }
         else {
