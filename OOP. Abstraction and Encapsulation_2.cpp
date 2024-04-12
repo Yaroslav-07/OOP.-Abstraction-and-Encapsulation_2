@@ -57,8 +57,21 @@ private:
         }
     }
 
+    void deleteNodes(Node* node) {
+        if (node == nullptr) {
+            return;
+        }
+        deleteNodes(node->left);
+        deleteNodes(node->right);
+        delete node;
+    }
+
 public:
     BST() : root(nullptr) {}
+
+    ~BST() {
+        deleteNodes(root);
+    }
 
     void insert(const Address& data) {
         root = insert(root, data);
